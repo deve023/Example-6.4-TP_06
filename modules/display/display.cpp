@@ -1,23 +1,21 @@
 /*
-    Este archivo de codigo utiliza una interfaz paralela de 8 bits para comunicarse con la pantalla LCD:
-    3 pines para el control de la señal (rs, rw, e) y 8 pines D0, D1, ..., D7 para comunicar datos.
+    Este archivo de codigo utiliza una interfaz SPI para comunicarse con la pantalla LCD.
+    Se utilizan los pines CS, MOSI y SCK de la interfaz SPI. El MISO no se utiliza al no
+    recibir datos desde el display a la placa NUCLEO.
     
     Arbol de funciones:
     displayInit()
         |- displayCodeWrite()
-        |      |- displayPinWrite()
-        |      |- displayDataBusWrite()
    displayWriteLine()
         |- displayCodeWrite()
-        |      |- displayPinWrite()
-        |      |- displayDataBusWrite()
    displayCharPositionWrite()
         |- displayCodeWrite()
-        |      |- displayPinWrite()
-        |      |- displayDataBusWrite()
         
-   Pines de placa NUCLEO asociados a la pantalla LCD: D0-D9    
-*/
+   Pines de placa NUCLEO asociados a la pantalla LCD: PD_14(CS) PA_7(SPI_MOSI) PA_5(SPI_SCK)
+
+   Los métodos lock() y unlock() permiten tomar posesión del 'recurso' SPI BUS. El sistema
+   operativo se asegura que ningún otra función/modulo haga uso del SPI BUS.
+   */
 
 //=====[Libraries]=============================================================
 

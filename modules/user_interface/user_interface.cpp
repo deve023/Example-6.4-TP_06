@@ -179,6 +179,7 @@ static void userInterfaceDisplayUpdate()
         accumulatedDisplayTime =
             accumulatedDisplayTime + SYSTEM_TIME_INCREMENT_MS;        
     } 
+    displayPrintMatrix();
 }
 
 static void incorrectCodeIndicatorUpdate()
